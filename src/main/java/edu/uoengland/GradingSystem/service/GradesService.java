@@ -14,5 +14,6 @@ public interface GradesService {
 	public void createAGrade(GradesDTO gradesDTO);
 	public String deleteGrade(UUID gradeId);
 	public String updateGrade(Grade newGrade);
+	public List<String> getAllGradesForACourse(String course);
 	
 }
