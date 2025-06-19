@@ -53,6 +53,12 @@ public class GradesServiceImpl implements GradesService{
 		
 		return "The Grade has been successfully updated.";
 	}
+
+	@Override
+	public List<String> getAllGradesForACourse(String course) {
+
+		return gradesRepository.getAllGradesForACourse(course);
+	}
 	
 	
 }

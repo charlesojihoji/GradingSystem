@@ -94,4 +94,17 @@ public class GradesController {
 		
 		return "The Grade has been successfully updated.";
 	}
+	
+	@GetMapping("/studentsGrades/{course}")
+	public List<String> getStudentGradesforCourse(@PathVariable String course) {
+		
+		try {
+			List<String> listOfCourses = gradesService.getAllGradesForACourse(course);
+			return listOfCourses;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
