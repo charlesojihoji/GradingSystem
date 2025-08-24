@@ -16,8 +16,8 @@ public class Grade {
 	@Column(name="studentsFullName", nullable=false)
 	private String studentsFullName;
 	
-	@Column(name="course", nullable=false)
-	private String course;
+	@Column(name="courseName", nullable=false)
+	private String courseName;
 	
 	@Column(name="grade")
 	private String grade;
@@ -31,10 +31,10 @@ public class Grade {
 		super();
 	}
 
-	public Grade(String studentsFullName, String course, String grade, UUID gradeId) {
+	public Grade(String studentsFullName, String courseName, String grade, UUID gradeId) {
 		super();
 		this.studentsFullName = studentsFullName;
-		this.course = course;
+		this.courseName = courseName;
 		this.grade = grade;
 		this.gradeId = gradeId;
 	}
@@ -47,12 +47,12 @@ public class Grade {
 		this.studentsFullName = studentsFullName;
 	}
 
-	public String getCourse() {
-		return course;
+	public String getCourseName() {
+		return courseName;
 	}
 
-	public void setCourse(String course) {
-		this.course = course;
+	public void setCourseName(String course) {
+		this.courseName = courseName;
 	}
 
 	public String getGrade() {

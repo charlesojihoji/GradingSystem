@@ -12,6 +12,6 @@ import edu.uoengland.GradingSystem.entity.Grade;
 @Repository
 public interface GradesRepository extends JpaRepository<Grade, UUID> {
 	
-	@Query("SELECT g.grade FROM Grade g WHERE g.course = :course")
-	public List<String> getAllGradesForACourse(String course);
+	@Query("SELECT g.grade FROM Grade g WHERE g.courseName = :courseName")
+	public List<String> getAllGradesForACourse(String courseName);
 }
