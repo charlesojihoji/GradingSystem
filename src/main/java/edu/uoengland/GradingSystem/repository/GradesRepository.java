@@ -14,4 +14,8 @@ public interface GradesRepository extends JpaRepository<Grade, UUID> {
 	
 	@Query("SELECT g.grade FROM Grade g WHERE g.courseName = :courseName")
 	public List<String> getAllGradesForACourse(String courseName);
+
+	public List<Grade> findByCourseName(String courseName);
+
+	public List<Grade> findBystudentsFullName(String studentsFullName);
 }

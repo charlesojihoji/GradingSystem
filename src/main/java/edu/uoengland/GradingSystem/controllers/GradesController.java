@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import edu.uoengland.GradingSystem.service.GradesService;
 
 @RequestMapping("/grades")
 @RestController
+@CrossOrigin("*")
 public class GradesController {
 
 	@Autowired
@@ -106,5 +108,50 @@ public class GradesController {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	@PutMapping("/updateGrade/{gradeId}/student/{studentName}")
+	public String facultyUpdatesAStudentsGrade(@RequestBody GradesDTO gradesDTO, @PathVariable UUID gradeId, @PathVariable String studentName) {
+		
+		return gradesService.facultyUpdatesAStudentsGrade(gradesDTO, gradeId, studentName);
+	}
+	
+	/*The Pseudocode or algorithm
+	Go through the Grades' table in the database
+	Select all the rows with the said-course
+	Sort the grades associated with the said-course
+	Return that student name(s) with the same best grade
+	*/
+	
+	@GetMapping("/bestStudentForACourse/{courseName}")
+	public List<String> bestStudentsForACourse(@PathVariable String courseName){
+		
+		return gradesService.getBestStudentsForACourse(courseName);
+	}
+	
+	/*The Pseudocode or algorithm
+	Go through the Grades' table in the database
+	Select all the rows with the said-course
+	Sort the grades associated with the said-course
+	Return the student name(s) with the same worst grade
+	*/
+	
+	@GetMapping("/worstStudentForACourse/{courseName}")
+	public List<String> worstStudentsForACourse(@PathVariable String courseName){
+		
+		return gradesService.getWorstStudentsForACourse(courseName);
+	}
+	
+	/*The Pseudocode or algorithm
+	Go through the Grades' table in the database
+	Select all the rows with the said-student
+	Get the numeric average of all of the students' grades
+	Return the student's equivalent grade
+	*/
+	
+	@GetMapping("/averageGradeOfAStudent/{studentsFullName}")
+	public String averageGradeOfAStudent(@PathVariable String studentsFullName){
+		
+		return gradesService.getTheAverageGradeOfAStudent(studentsFullName);
 	}
 }
