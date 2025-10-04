@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Grades")
+@Table(name="grades")
 public class Grade {
 
 	@Column(name="studentsFullName", nullable=false)
@@ -47,11 +47,12 @@ public class Grade {
 		this.studentsFullName = studentsFullName;
 	}
 
+
 	public String getCourseName() {
 		return courseName;
 	}
 
-	public void setCourseName(String course) {
+	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
 
